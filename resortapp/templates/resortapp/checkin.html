@@ -1,0 +1,18 @@
+{% extends "resortapp/base.html" %}
+{% block content %}
+<h2>Check-In Customer</h2>
+<form method="POST" class="row g-3">
+  {% csrf_token %}
+  <div class="col-md-4">
+    <label class="form-label">Customer ID</label>
+    <input type="number" name="customer_id" class="form-control" required>
+  </div>
+  <div class="col-md-4">
+    <label class="form-label">Room Number</label>
+    <input type="text" name="room_number" class="form-control" required>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Check-In</button>
+  </div>
+</form>
+{% endblock %}

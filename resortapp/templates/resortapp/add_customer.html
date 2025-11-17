@@ -1,0 +1,26 @@
+{% extends "resortapp/base.html" %}
+{% block content %}
+<h2>Add New Customer</h2>
+<form method="POST" class="row g-3">
+  {% csrf_token %}
+  <div class="col-md-6">
+    <label class="form-label">Customer Name</label>
+    <input type="text" name="name" class="form-control" required>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Contact Number</label>
+    <input type="number" name="contact" class="form-control" maxlength="10" required>
+  </div>
+  <div class="col-12">
+    <label class="form-label">Address</label>
+    <textarea name="address" class="form-control" rows="3" required></textarea>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">ID Proof</label>
+    <input type="number" name="id_proof" class="form-control" required>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-success" type="submit">Add Customer</button>
+  </div>
+</form>
+{% endblock %}

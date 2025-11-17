@@ -1,0 +1,42 @@
+{% extends "resortapp/base.html" %}
+{% block content %}
+<h2 class="mb-4">Update Room Details</h2>
+
+<form method="POST" class="row g-3">
+    {% csrf_token %}
+    <div class="col-md-4">
+        <label class="form-label">Room Number</label>
+        <input type="text" name="room_number" class="form-control" required>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label">New Room Type (Optional)</label>
+        <select name="room_type" class="form-select">
+            <option value="">-- No Change --</option>
+            <option value="single">Single</option>
+            <option value="double">Double</option>
+            <option value="deluxe">Deluxe</option>
+            <option value="suite">Suite</option>
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label">New Price (Optional)</label>
+        <input type="number" step="0.01" name="price" class="form-control">
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label">New Status (Optional)</label>
+        <select name="status" class="form-select">
+            <option value="">-- No Change --</option>
+            <option value="Available">Available</option>
+            <option value="Occupied">Occupied</option>
+            <option value="Maintenance">Maintenance</option>
+        </select>
+    </div>
+
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit">Update Room</button>
+    </div>
+</form>
+{% endblock %}

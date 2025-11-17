@@ -1,0 +1,26 @@
+{% extends "resortapp/base.html" %}
+{% block content %}
+<h2>All Rooms</h2>
+<table class="table table-bordered">
+  <thead><tr><th>Room No</th><th>Type</th><th>Price</th><th>Status</th><th>Actions</th></tr></thead>
+  <tbody>
+    {% for r in rooms %}
+      <tr>
+        <td>{{ r.room_number }}</td>
+        <td>{{ r.get_room_type_display }}</td>
+        <td>{{ r.price }}</td>
+        <td>{{ r.status }}</td>
+        <td>
+          <form method="post" action="{% url 'resortapp:delete_room' %}" style="display:inline;">
+            {% csrf_token %}
+            <input type="hidden" name="room_number" value="{{ r.room_number }}">
+            <button class="btn btn-sm btn-danger" onclick="return confirm('Delete room?');">Delete</button>
+          </form>
+        </td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="5">No rooms found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

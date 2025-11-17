@@ -1,0 +1,28 @@
+{% extends "resortapp/base.html" %}
+{% block content %}
+<h2>Search Results for "{{ query }}"</h2>
+
+<h4>Customers</h4>
+<table class="table">
+  <thead><tr><th>ID</th><th>Name</th><th>Contact</th></tr></thead>
+  <tbody>
+    {% for c in customers %}
+      <tr><td>{{ c.id }}</td><td>{{ c.name }}</td><td>{{ c.contact }}</td></tr>
+    {% empty %}
+      <tr><td colspan="3">No customers found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h4>Rooms</h4>
+<table class="table">
+  <thead><tr><th>Room No</th><th>Type</th><th>Status</th></tr></thead>
+  <tbody>
+    {% for r in rooms %}
+      <tr><td>{{ r.room_number }}</td><td>{{ r.get_room_type_display }}</td><td>{{ r.status }}</td></tr>
+    {% empty %}
+      <tr><td colspan="3">No rooms found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "resortapp/base.html" %}
+{% block content %}
+<div class="p-5 rounded bg-light text-center">
+  <div class="row align-items-center">
+    <div class="col-md-6">
+      <h1 class="display-5">Welcome to Serene Haven Resort Admin</h1>
+      <p class="lead">Manage customers, rooms, bookings and billing from one place.</p>
+      <a class="btn btn-primary btn-lg" href="{% url 'resortapp:add_customer' %}">Add Customer</a>
+      <a class="btn btn-outline-primary btn-lg" href="{% url 'resortapp:add_room' %}">Add Room</a>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-4">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=60"
+        class="card-img-top" alt="room" style="height:200px; object-fit:cover;">
+      <div class="card-body">
+        <h5 class="card-title">Rooms</h5>
+        <p class="card-text">Manage room inventory and pricing.</p>
+        <a href="{% url 'resortapp:rooms_list' %}" class="btn btn-primary">View Rooms</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=60"
+        class="card-img-top" alt="customer" style="height:200px; object-fit:cover;">
+      <div class="card-body">
+        <h5 class="card-title">Customers</h5>
+        <p class="card-text">Add and update customer details.</p>
+        <a href="{% url 'resortapp:customers_list' %}" class="btn btn-primary">View Customers</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=60"
+        class="card-img-top" alt="booking" style="height:200px; object-fit:cover;">
+      <div class="card-body">
+        <h5 class="card-title">Bookings</h5>
+        <p class="card-text">Check-in, check-out and billing management.</p>
+        <a href="{% url 'resortapp:checkin' %}" class="btn btn-primary">Check-In</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

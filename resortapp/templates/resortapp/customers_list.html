@@ -1,0 +1,27 @@
+{% extends "resortapp/base.html" %}
+{% block content %}
+<h2>All Customers</h2>
+<table class="table table-striped">
+  <thead><tr><th>ID</th><th>Name</th><th>Contact</th><th>Address</th><th>Actions</th></tr></thead>
+  <tbody>
+    {% for c in customers %}
+      <tr>
+        <td>{{ c.id }}</td>
+        <td>{{ c.name }}</td>
+        <td>{{ c.contact }}</td>
+        <td>{{ c.address|truncatechars:50 }}</td>
+        <td>
+          <a class="btn btn-sm btn-secondary" href="{% url 'resortapp:update_customer' %}">Update</a>
+          <form method="post" style="display:inline;" action="{% url 'resortapp:delete_customer' %}">
+            {% csrf_token %}
+            <input type="hidden" name="customer_id" value="{{ c.id }}">
+            <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Delete this customer?');">Delete</button>
+          </form>
+        </td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="5">No customers found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

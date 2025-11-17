@@ -1,0 +1,33 @@
+{% extends "resortapp/base.html" %}
+{% block content %}
+<h2>Billing Report</h2>
+
+<form method="POST" class="row g-3 mb-4">
+  {% csrf_token %}
+  <div class="col-md-4">
+    <label class="form-label">Customer ID</label>
+    <input type="number" name="customer_id" class="form-control" required>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Generate Report</button>
+  </div>
+</form>
+
+{% if report %}
+  <h4>Customer: {{ report.customer.name }} ({{ report.customer.contact }})</h4>
+  <table class="table">
+    <thead><tr><th>Booking ID</th><th>Room</th><th>Check-in</th><th>Check-out</th><th>Total</th></tr></thead>
+    <tbody>
+      {% for b in report.bookings %}
+        <tr>
+          <td>{{ b.id }}</td>
+          <td>{{ b.room.room_number }}</td>
+          <td>{{ b.checkin }}</td>
+          <td>{{ b.checkout }}</td>
+          <td>{{ b.total_amount }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+{% endblock %}

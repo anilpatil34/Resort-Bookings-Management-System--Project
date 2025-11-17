@@ -1,0 +1,16 @@
+{% extends "resort/base.html" %}
+{% block content %}
+<h3>Confirm Deletion</h3>
+<form method="post">
+  {% csrf_token %}
+  {% if customer_id %}
+    <p>Delete customer with ID: {{ customer_id }} ?</p>
+    <input type="hidden" name="customer_id" value="{{ customer_id }}">
+  {% elif room_number %}
+    <p>Delete room: {{ room_number }} ?</p>
+    <input type="hidden" name="room_number" value="{{ room_number }}">
+  {% endif %}
+  <button class="btn btn-danger" type="submit">Yes, Delete</button>
+  <a class="btn btn-secondary" href="{% url 'resort:home' %}">Cancel</a>
+</form>
+{% endblock %}
