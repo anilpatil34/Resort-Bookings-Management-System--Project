@@ -1,5 +1,7 @@
 # 🏨 Resort Bookings Management System 
 
+Python & Django based MVT Architecture Project
+
 ## 🚀 Features
 
 ### 🔹 Customer Management
