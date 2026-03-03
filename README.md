@@ -1,8 +1,4 @@
-# 🏨 Resort Management System – Django CRUD Project
-
-A complete Resort Management System built with **Python Django**, focusing on CRUD operations and basic resort workflow features such as check-in, check-out, and billing reports.
-
----
+# 🏨 Resort Bookings Management System 
 
 ## 🚀 Features
 
